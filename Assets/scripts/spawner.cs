@@ -22,9 +22,11 @@ public class spawner : MonoBehaviour {
 			nextSpawntime = Time.time + secondsBetweenSpawns;
 			
 			float spawnSize = Random.Range(spawnSizeMinMax.x,spawnSizeMinMax.y);
-			Vector2 spawnPosition = new Vector2 (Random.Range(-screenHalfsizeWorldUnits.x,screenHalfsizeWorldUnits.x),screenHalfsizeWorldUnits.y + spawnSize/2f);
-			Instantiate(fallingBlockprefab,spawnPosition,Quaternion.identity);
-
+			Vector2 spawnPosition = new Vector2 (Random.Range(-screenHalfsizeWorldUnits.x,screenHalfsizeWorldUnits.x),screenHalfsizeWorldUnits.y + spawnSize);
+			// Building new gameObject to help Scale
+			GameObject newBlock = (GameObject)Instantiate(fallingBlockprefab,spawnPosition,Quaternion.identity);
+			newBlock.transform.localScale = Vector2.one * spawnSize;
+			
 		}
 	}
 }
