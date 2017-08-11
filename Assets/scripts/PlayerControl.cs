@@ -28,4 +28,10 @@ public class PlayerControl : MonoBehaviour {
 
 
 	}
+
+	void OnTriggerEnter2D(Collider2D triggerCollider){
+		if(triggerCollider.tag == "Falling Block"){
+			Destroy (gameObject);
+		}
+	}
 }
