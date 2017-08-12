@@ -6,6 +6,7 @@ public class PlayerControl : MonoBehaviour {
 
 	public float speed = 7;
 	public float playerPositionWorld;
+	public event System.Action OnPlayerDeath;
 	// Use this for initialization
 	void Start () {
 		float halfPlayerWidth  = transform.localScale.x / 2f;
@@ -31,6 +32,9 @@ public class PlayerControl : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D triggerCollider){
 		if(triggerCollider.tag == "Falling Block"){
+			if(OnPlayerDeath != null){
+				OnPlayerDeath();
+			}
 			Destroy (gameObject);
 		}
 	}

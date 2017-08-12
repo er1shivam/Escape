@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 39cf32de1d333884fb62bd23e81cbcb5
+timeCreated: 1502485905
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Mockup
+  fontNames:
+  - Mockup
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
