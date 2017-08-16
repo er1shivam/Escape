@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour {
 
-	public float speed = 7;
+	public float speed = 5;
 	public float playerPositionWorld;
 	public event System.Action OnPlayerDeath;
 	// Use this for initialization
@@ -16,9 +16,24 @@ public class PlayerControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		float inputX = Input.GetAxisRaw("Horizontal");
-		float velocity = inputX * speed;
-		transform.Translate (Vector2.right*velocity* Time.deltaTime);
+		// float inputX = Input.GetAxis("Mouse X");
+		// float velocity = inputX * speed;
+		//float velocity = 25f;
+		 if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary)
+         {
+             Vector2 touchPosition = Input.GetTouch(0).position;
+             double halfScreen = Screen.width / 2.0;
+ 
+             //Check if it is left or right?
+             if(touchPosition.x < halfScreen){
+                transform.Translate(Vector3.left * 5 * Time.deltaTime);
+             } else if (touchPosition.x > halfScreen) {
+                transform.Translate(Vector3.right * 5 * Time.deltaTime);
+             }
+ 
+         }
+
+
 
 		if(transform.position.x < -playerPositionWorld){
 			transform.position = new Vector2 (playerPositionWorld, transform.position.y);
@@ -26,7 +41,6 @@ public class PlayerControl : MonoBehaviour {
 		if(transform.position.x > playerPositionWorld){
 			transform.position = new Vector2 (-playerPositionWorld, transform.position.y);
 		}
-
 
 	}
 
